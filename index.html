@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue Js 2 </title>
+</head>
+<body>
+
+<main>
+    <!-- INterpolacion o imprimir el contenido de una variable del modelo->
+    <!-- <pre>{{ $data }}</pre>  Mostrando el valor del arreglo a data -->
+    <h1> {{ texto }}</h1>
+    <h2 v-text="texto"></h2>
+    <p> El nombre es : {{nombre}}</p>
+    <!-- Two way data building, en reactivo -->
+    <input type="text" v-model="nombre">
+   Nota:  <input type="text" v-model="nota">
+    <strong v-if="nota && nota >= 5  && nota <= 99" >
+        Tu nota es mayor a {{ nota }} en hora buena.
+    </strong>
+    <strong v-else-if="nota && nota >= 100 " >
+       Excelente !!
+    </strong>
+        <span v-else> Has suspendido</span>
+
+    <hr>
+
+    <h1>Peliculas</h1>
+       <ul v-for="pelicula in peliculas">
+           <li>{{ pelicula }}</li>
+       </ul>
+    <h1>Objeto Peliculas ( Array Objeto)</h1>
+    <ul v-for="objmovie in objectMovie">
+        <li>{{ objmovie.pelicula }}</li>
+        <li>{{ objmovie.anio }}</li>
+        <li>{{ objmovie.mes }}</li>
+    </ul>
+
+    <h1>Objeto frutas (objetos )</h1>
+    <ul v-for="(value, key, index) in frutas">
+        <li>{{ index }} : {{ key }} - {{ value}}</li>
+    </ul>
+
+</main>
+     <script src="public/js/vue.js"></script>
+     <script src="public/js/codigo.js"></script>
+
+</body>
+</html>
