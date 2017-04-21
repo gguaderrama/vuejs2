@@ -56,10 +56,14 @@ Vue.component('hijo', {
     template: `<div><p style="background: blue; ">Soy un parrafo en en el componente hijo</p></div>`
 });
 
-
-
 // darle click a unos enlaces y ir cambiando de componente para hacer fácil  componentes dinamicos
+Vue.component('articulos', {
+    template: `<div><p style="background: red; ">Soy un parrafo de articulos. </p></div>`
+});
 
+Vue.component('productos', {
+    template: `<div><p style="background: blue; ">Soy un parrafo de productos. </p></div>`
+});
 
 
 
@@ -81,6 +85,7 @@ new Vue ({
         });
     },
     data : {
+        elegido: 'articulos',
         post : null,
         texto : 'Hola mundo des vue2',
         nombre: 'Mariana',

@@ -8,10 +8,90 @@
     <title>Vue Js 2 </title>
 </head>
 <body>
+<style>
+    .like{
+        background : green;
+        color: white;
+        padding: 20px;
+    }
+</style>
+
+<div id="app">
+      {{texto}}
+</div>
+<div id="app2">
+    {{texto}}
+</div>
 
 <main>
-    <!-- INterpolacion o imprimir el contenido de una variable del modelo->
-    <!-- <pre>{{ $data }}</pre>  Mostrando el valor del arreglo a data -->
+
+
+    <button @click="changeProperty()"> Componente Articulo</button>
+
+    <hr>
+        <h3>Carga de componentes dinamicos </h3>
+        <componet :is="elegido">
+
+        </componet>
+   <!-- componentes dentro de otro componentes -->
+    <hr/>
+    <padre></padre>
+
+    <hr>
+    <!-- Plantilla en línea y como pasar cosas de un componente adentro de otro componente -->
+    <frutas :objeto="objetoSimple" inline-template>
+        <div>
+            <h1> componente peliculas <br/ >{{objeto.nombre}}</h1>
+        </div>
+    </frutas>
+    <!-- componentes -->
+    <peliculas>
+    </peliculas>
+    <hr/>
+    <h1>Listado por Ajax</h1>
+    <ul v-if="post">
+        <li v-for="(p , index ) in post">
+            {{p.title}}
+        </li>
+    </ul>
+    <span v-else> Cargando Listado por Ajax ...</span>
+    <hr/>
+    <input type="search" v-model="busqueda" placeholder="buscar fruta">
+    <h1>Frutas : </h1>
+    <ol>
+         <li @click="marcar(index)" v-bind:class="{ like: index == confirmado }" v-for="(fruta, index) in  buscarFruta"> Nombre : {{fruta.nombre | mayusculas}} </li>
+    </ol>
+    <br><br>
+    <hr>
+
+    <!-- Eventos -->
+    <h1>{{ nombreYapellido | mayusculas }}</h1>
+
+    <form @submit.prevent="crearPelicula()">
+        <input type="text" v-model="peliculaNueva" @click="buscarPelicula(peliculaNueva)">
+        <button type="submit" value="Guardar Pelicula">
+            Guardar Pelicula
+        </button>
+    </form>
+    <h1>Peliculas Agregadas : </h1>
+    <ol>
+        <li v-for="(p, index) in  peliculasAgregadas">{{ p }}  <button @click="borrarPelicula(index)">Eliminar Pelicula</button> </li>
+    </ol>
+    <br><br>
+
+    <hr/>
+    <h1>Peliculas Ordenadas : </h1>
+
+    <ol>
+        <li v-for="(p, index) in  ordenarPeliculas">{{ p }}  <button @click="borrarPelicula(index)">Eliminar Pelicula</button> </li>
+    </ol>
+    <br><br>
+    <hr>
+    <!--<button v-on:click="crearPelicula()">Crear Pelicula</button>
+   <button @click="borrarPelicula()">Eliminar Pelicula</button> -->
+   <hr>
+   <!-- INterpolacion o imprimir el contenido de una variable del modelo->
+   <!-- <pre>{{ $data }}</pre>  Mostrando el valor del arreglo a data -->
     <h1> {{ texto }}</h1>
     <h2 v-text="texto"></h2>
     <p> El nombre es : {{nombre}}</p>
@@ -43,10 +123,14 @@
     <ul v-for="(value, key, index) in frutas">
         <li>{{ index }} : {{ key }} - {{ value}}</li>
     </ul>
+    <hr>
 
 </main>
      <script src="public/js/vue.js"></script>
+     <script src="public/js/axios.min.js"></script>
      <script src="public/js/codigo.js"></script>
 
 </body>
 </html>
+
+
