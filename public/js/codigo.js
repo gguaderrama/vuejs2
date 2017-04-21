@@ -33,11 +33,35 @@ Vue.component('peliculas', {
         }
     }
 });
-
 Vue.component('frutas', {
-    props : ['objeto'],
-   // template: '<div><h1> componente peliculas {{objeto.nombre}}</h1></div>'
+    props : ['objeto']
+
 });
+
+
+// Utilizar un componente dentro de otro.
+
+Vue.component('padre', {
+    template: `<div>
+         <h1>this is a template </h1>
+              <div>
+                   <hijo></hijo>
+              </div>
+         
+         </div>`
+});
+
+
+Vue.component('hijo', {
+    template: `<div><p style="background: blue; ">Soy un parrafo en en el componente hijo</p></div>`
+});
+
+
+
+// darle click a unos enlaces y ir cambiando de componente para hacer fácil  componentes dinamicos
+
+
+
 
 
 
