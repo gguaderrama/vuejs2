@@ -18,24 +18,21 @@
 
 <div id="app">
       {{texto}}
-</div>
 <div id="app2">
     {{texto}}
 </div>
-
 <main>
-
-
-    <button @click="changeProperty()"> Componente Articulo</button>
-
+    <button @click="elegido = 'articulos'"> Componente Articulo</button>
+    <button @click="elegido = 'productos'" > Componente Articulo</button>
     <hr>
         <h3>Carga de componentes dinamicos </h3>
         <componet :is="elegido">
-
         </componet>
    <!-- componentes dentro de otro componentes -->
     <hr/>
-    <padre></padre>
+    <padre>
+
+    </padre>
 
     <hr>
     <!-- Plantilla en línea y como pasar cosas de un componente adentro de otro componente -->
